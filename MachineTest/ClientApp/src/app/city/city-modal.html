@@ -1,0 +1,21 @@
+<h4 mat-dialog-title>City</h4>
+<div mat-dialog-content>
+  <mat-form-field hidden>
+    <input matInput [(ngModel)]="data.id" >
+  </mat-form-field>
+
+  <mat-form-field class="col-sm-12">
+    <input matInput [(ngModel)]="data.name" placeholder="Name" [formControl]="name" required>
+  
+    <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="col-sm-12">
+    <textarea matInput placeholder="Textarea"  [(ngModel)]="data.description" placeholder="Description"></textarea>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions class="col-sm-12">
+  <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button [mat-dialog-close]="data" color="primary" cdkFocusInitial class="btn bnt-sm btn-info">Save</button>
+</div>
