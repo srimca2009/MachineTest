@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Customer } from '../model/customer';
 import { City } from '../model/city';
 
 export interface Food {
@@ -18,7 +20,7 @@ export class CustomerComponent implements OnInit {
   public cities: City[];
   _baseUrl : string = '';
 
-  constructor(@Inject('BASE_URL') baseUrl: string,public http: HttpClient) { }
+  constructor(@Inject('BASE_URL') baseUrl: string,public http: HttpClient, private _router: Router) { }
 
   ngOnInit() {
     this.getAllCities();
@@ -36,11 +38,12 @@ export class CustomerComponent implements OnInit {
     }, error => console.error(error));
   }
 
-  
-  saveCustomer(data){
-    this.http.post<City>(this._baseUrl + 'api/Customer/Save', data).subscribe(result => {
-      
-    }, error => console.error(error));
+  saveCustomer(){
+    debugger;
+    var dd = this.city
+    this._router.navigate(['/customerslist']);
   }
+
+
 
 }
