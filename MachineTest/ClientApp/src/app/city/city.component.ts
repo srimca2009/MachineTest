@@ -1,9 +1,9 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, Validators,FormGroupDirective, NgForm,  FormGroup} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { City } from '../model/city';
-
+import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-city',
@@ -95,16 +95,22 @@ export class CityComponent implements OnInit {
   templateUrl: 'city-modal.html',
 })
 export class CityModal {
-
+  public cityForm: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<CityModal>,
-    @Inject(MAT_DIALOG_DATA) public data: City) {}
+    @Inject(MAT_DIALOG_DATA) public data: City) {
+
+      this.cityForm = new FormGroup({
+        name: new FormControl('', [Validators.required, Validators.maxLength(60)])
+      });
+
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  name = new FormControl('', [Validators.required, Validators.email]);
+  name = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
     return this.name.hasError('required') ? 'You must enter a value' : '';
