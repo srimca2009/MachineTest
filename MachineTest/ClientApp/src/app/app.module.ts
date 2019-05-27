@@ -58,6 +58,8 @@ import {
   MatTreeModule,
   MatFormFieldModule,
 } from '@angular/material';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
 
 
 @NgModule({
@@ -68,7 +70,9 @@ import {
     CounterComponent,
     FetchDataComponent,
     CityComponent,
-    CityModal
+    CityModal,
+    CustomerComponent,
+    CustomerListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -88,6 +92,10 @@ import {
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'city', component: CityComponent },
+      { path: 'customerslist', component: CustomerListComponent },
+      { path: 'customer', component: CustomerComponent },
+      { path: 'customer/edit/:id', component: CustomerComponent },
+      
     ])
   ],
   entryComponents: [CityComponent,CityModal],

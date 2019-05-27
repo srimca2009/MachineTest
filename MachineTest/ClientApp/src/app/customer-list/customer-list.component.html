@@ -1,0 +1,28 @@
+<h1>City List</h1>
+
+<button mat-raised-button color="primary" [routerLink]="['/customer']" class="btn bnt-sm btn-info">Add Customer</button>
+<p *ngIf="!customers"><em>Loading...</em></p>
+
+<table class='table table-striped table-bordered' *ngIf="customers">
+  <thead>
+    <tr>
+      <th hidden>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th width="15%">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cust of customers">
+      <td hidden>{{cust.id}}</td>
+      <td>{{ cust.name }}</td>
+      <td>{{ cust.address }}</td>
+      <td></td>
+      <td width="15%">
+        <button class="btn btn-sm btn-info" [routerLink]="['/customer/edit/', cust.id]">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteCustomer(cust.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

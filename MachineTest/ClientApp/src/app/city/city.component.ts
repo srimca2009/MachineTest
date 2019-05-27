@@ -57,7 +57,7 @@ export class CityComponent implements OnInit {
   }
 
   deleteCity(cityId){
-    var isConfirm = confirm("Do you want to delete the city ? ");
+    var isConfirm = confirm("Do you want to delete the customer ? ");
     if(isConfirm){
       this.http.delete(this._baseUrl + 'api/City/Delete/'+ cityId).subscribe(result => {
         this.getAllCities();

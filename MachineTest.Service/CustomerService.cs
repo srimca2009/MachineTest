@@ -16,5 +16,24 @@ namespace MachineTest.Service
             _unitOfWork = unitOfWork;
             _customerRepository = customerRepository;
         }
+
+        public Customer GetById(int id)
+        {
+            return _customerRepository.GetById(id);
+        }
+
+        public int Delete(int Id)
+        {
+            try
+            {
+                var result = _customerRepository.GetById(Id);
+                _customerRepository.Delete(result);
+                return _unitOfWork.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
