@@ -85,6 +85,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
+    MatSelectModule,
     BrowserAnimationsModule,
 
     RouterModule.forRoot([
